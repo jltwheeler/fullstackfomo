@@ -1,0 +1,12 @@
+exclude:
+  - main.py
+  - venv/**
+  - tests/**
+  - __pycache__/**
+  - .pytest_cache/**
+  - token
+  - Dockerfile
+  - docker-compose.yml
+  - scripts/**
+  - requirements-dev.txt
+  - README.md

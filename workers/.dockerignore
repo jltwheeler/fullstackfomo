@@ -1,0 +1,4 @@
+tests/
+.serverless
+__pycache__/
+venv/

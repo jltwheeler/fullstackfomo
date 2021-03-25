@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "./:/app"
+    stdin_open: true
+    ports:
+      - "5000:3000"
+    environment:
+      - PYTHON_ENV=dev
+    networks:
+      - app-network
+
+  dynamo:
+    container_name: dynamodb-local
+    image: amazon/dynamodb-local
+    networks:
+      - app-network
+    ports:
+      - "8000:8000"
+    volumes:
+      - dynamodata:/home/dynamodblocal
+    working_dir: /home/dynamodblocal
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ."
+
+networks:
+  app-network:
+    name: app-network
+
+volumes:
+  dynamodata: {}
