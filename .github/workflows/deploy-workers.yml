@@ -20,6 +20,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "workers"
+      - name: debug
+        run: echo $(ls) $(pwd)
 
       - name: 🐍 install python
         uses: actions/setup-python@v2
