@@ -7,15 +7,13 @@ on:
     path:
       - "workers/**"
 
-defaults:
-  run:
-    shell: bash
-    working-directory: workers
-
 jobs:
   deploy:
     name: 🚀 Deploy to AWS via sls
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./workers
 
     steps:
       - name: 📚 checkout code
