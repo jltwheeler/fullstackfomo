@@ -1,4 +1,4 @@
-# FullstackFOMO architecture
+# FullStackFOMO architecture
 
 Diagrams have been created using the diagrams as code framework in Python,
 [diagrams][diagrams].
