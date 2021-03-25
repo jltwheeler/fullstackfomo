@@ -11,15 +11,10 @@ jobs:
   deploy:
     name: 🚀 Deploy to AWS via sls
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./workers
 
     steps:
       - name: 📚 checkout code
         uses: actions/checkout@v2
-        with:
-          path: "workers"
       - name: debug
         run: echo $(ls) $(pwd)
 
@@ -35,12 +30,15 @@ jobs:
           python -m pip install  --upgrade pip
           pip install -r requirements-dev.txt
           pip install -r requirements.txt
+        working-directory: ./workers
 
       - name: 🛂 lint
         run: find . -path ./venv -prune -false -o -type f -name "*.py" | xargs pylint --exit-zero
+        working-directory: ./workers
 
       - name: 🧪 test
         run: pytest -v
+        working-directory: ./workers
 
       - name: 💚 node
         uses: actions/setup-node@v2
@@ -59,3 +57,4 @@ jobs:
 
       - name: 🚀 deploy to sls
         run: sls deploy
+        working-directory: ./workers
