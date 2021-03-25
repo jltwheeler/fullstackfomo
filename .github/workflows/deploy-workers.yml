@@ -1,0 +1,56 @@
+name: Deploy workers
+
+on:
+  push:
+    branches:
+      - main
+    path:
+      - "workers/**"
+
+jobs:
+  deploy:
+    name: 🚀 Deploy to AWS via sls
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📚 checkout code
+        uses: actions/checkout@v2
+        with:
+          path: "workers"
+
+      - name: 🐍 install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: 🐍 Display Python version
+        run: python -c "import sys; print(sys.version)"
+
+      - name: 📦 install python deps
+        run: |
+          python -m pip install  --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install -r requirements.txt
+
+      - name: 🛂 lint
+        run: find . -path ./venv -prune -false -o -type f -name "*.py" | xargs pylint --exit-zero
+
+      - name: 🧪 test
+        run: pytest -v
+
+      - name: 💚 node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: 📦 install packages
+        run: npm i -g serverless serverless-python-requirements
+
+      - name: ⚙️ Configure AWS Creds
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - name: 🚀 deploy to sls
+        run: sls deploy
