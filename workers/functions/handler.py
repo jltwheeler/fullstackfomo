@@ -3,9 +3,13 @@ import json
 from datetime import datetime
 
 
-def hello(event, context):
+if os.environ.get("PYTHON_ENV", "prod") == "dev":
+    from dotenv import load_dotenv
+
+
+def yeet(event, context):
     body = {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
+        "message": "This is a test handler",
     }
 
     print("The function is running")
@@ -14,4 +18,5 @@ def hello(event, context):
     print(f"Function finished running at {now_str}")
 
     if os.environ.get("PYTHON_ENV", "prod") == "dev":
+        load_dotenv()
         return {"statusCode": 200, "body": json.dumps(body)}

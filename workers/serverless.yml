@@ -1,6 +1,7 @@
 service: fsfomo-workers
 
 frameworkVersion: "2"
+useDotEnv: true
 
 provider:
   name: aws
@@ -36,9 +37,9 @@ package: ${file(./serverless/package.yml)}
 
 functions:
   hello:
-    handler: handler.hello
+    handler: functions.handler.yeet
     events:
-      - schedule: rate(10 minutes)
+      - schedule: rate(60 minutes)
 #    Define function environment variables here
 #    environment:
 #      variable2: value2

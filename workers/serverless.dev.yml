@@ -19,9 +19,21 @@ provider:
 package: ${file(./serverless/package.yml)}
 
 functions:
-  hello:
-    handler: handler.hello
+  yeet:
+    handler: functions.handler.yeet
     events:
       - httpApi:
-          path: /api/hello
+          path: /api/yeet
+          method: get
+  twitter:
+    handler: functions.twitter_handler.main
+    events:
+      - httpApi:
+          path: /api/twitter
+          method: get
+  reddit:
+    handler: functions.reddit_handler.main
+    events:
+      - httpApi:
+          path: /api/reddit
           method: get
