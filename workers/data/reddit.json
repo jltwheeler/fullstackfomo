@@ -1,0 +1,74 @@
+[
+  {
+    "subreddit": "aws"
+  },
+  {
+    "subreddit": "browsers"
+  },
+  {
+    "subreddit": "coding"
+  },
+  {
+    "subreddit": "cscareerquestions"
+  },
+  {
+    "subreddit": "css"
+  },
+  {
+    "subreddit": "devops"
+  },
+  {
+    "subreddit": "docker"
+  },
+  {
+    "subreddit": "frontend"
+  },
+  {
+    "subreddit": "graphql"
+  },
+  {
+    "subreddit": "html5"
+  },
+  {
+    "subreddit": "javascript"
+  },
+  {
+    "subreddit": "learnjavascript"
+  },
+  {
+    "subreddit": "learnprogramming"
+  },
+  {
+    "subreddit": "learnwebdev"
+  },
+  {
+    "subreddit": "learnpython"
+  },
+  {
+    "subreddit": "node"
+  },
+  {
+    "subreddit": "Python"
+  },
+  {
+    "subreddit": "sass"
+  },
+  {
+    "subreddit": "typescript"
+  },
+  {
+    "subreddit": "vscode"
+  },
+  {
+    "subreddit": "vuejs"
+  },
+  {
+    "subreddit": "web_design"
+  },
+  {
+    "subreddit": "webdev"
+  },
+  {
+    "subreddit": "webhosting"
+  }
+]
