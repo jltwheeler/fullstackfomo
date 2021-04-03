@@ -22,3 +22,15 @@ def copy_dict_partial(
     for key in keys:
         new_dict[key] = input_dict[key]
     return new_dict
+
+
+def compose_update_expression(input_dict: dict) -> str:
+    base_expression = "SET "
+    expressions = ", ".join(
+        f"{key} = :val{i}" for i, key in enumerate(input_dict.keys())
+    )
+    return base_expression + expressions
+
+
+def compose_expression_attr_vals(input_dict: dict):
+    return {f":val{i}": val for i, val in enumerate(input_dict.values())}

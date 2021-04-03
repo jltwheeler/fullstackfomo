@@ -5,7 +5,7 @@ from decimal import Decimal
 REGION_NAME = "eu-west-1"
 FOMO_TABLES = [
     {
-        "name": "FomoSummary",
+        "name": "FomoMain",
         "definitions": [
             {"AttributeName": "id", "AttributeType": "S"},
             {"AttributeName": "dataSource", "AttributeType": "S"},
